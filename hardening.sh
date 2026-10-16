@@ -113,21 +113,18 @@ modprobe br_netfilter
 # sysctl config apply 
 sysctl -p
 
-#-------------------------------------------------------------
 # postfix Service: disable, stop and mask
 echo -e " \e[30;48;5;56m \e[1m \e[38;5;15mpostfix Service: disable, stop and mask \e[0m"
 systemctl stop postfix
 systemctl disable postfix
 systemctl mask postfix
 
-#-------------------------------------------------------------
 # firewalld Service: disable, stop and mask
 echo -e " \e[30;48;5;56m \e[1m \e[38;5;15mfirewalld Service: disable, stop and mask \e[0m"
 systemctl stop firewalld
 systemctl disable firewalld
 systemctl mask firewalld
 
-#-------------------------------------------------------------
 # ufw Service: disable, stop and mask
 echo -e " \e[30;48;5;56m \e[1m \e[38;5;15mufw Service: disable, stop and mask \e[0m"
 systemctl stop ufw
@@ -143,12 +140,13 @@ systemctl is-active --quiet sshd && echo -e "\e[1m \e[96m sshd service: \e[30;48
 }
 
 
-# fail2ban config -----------------------------------------
+# fail2ban config 
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 # ssh config 
 sed -i '/^\[sshd\]/a enabled = true' /etc/fail2ban/jail.local
 sed -i 's/port    = ssh/port    = '$SSH_PORT'/g' /etc/fail2ban/jail.local
 sed -i 's/port     = ssh/port    = '$SSH_PORT'/g' /etc/fail2ban/jail.local
+
 # service restart and status service
 {
 systemctl enable fail2ban.service 
