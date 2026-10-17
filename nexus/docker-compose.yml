@@ -14,7 +14,7 @@ services:
     container_name: nexus 
     restart: always
     volumes:
-      - "nexus-data:/nexus-dat"
+      - "nexus-data:/nexus-data"
     networks:
       - default
     labels:
