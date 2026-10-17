@@ -45,8 +45,13 @@ services:
       - media_volume:/app/backend/media
       - ".:/app/backend/backend_api"
     depends_on:
-      - db
-      - rabbitmq
+      db:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+      traefik:
+        condition: service_healthy
+        
     restart: on-failure
     labels:
      - "traefik.enable=true"

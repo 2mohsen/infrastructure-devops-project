@@ -1,0 +1,4 @@
+include:
+  - ./traefik/docker-compose.yml
+  - ./nexus/docker-compose.yml
+  - ./application/docker-compose.yml
