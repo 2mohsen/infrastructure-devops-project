@@ -73,5 +73,6 @@ services:
 volumes:
     redis-data:
     static_volume:
-    media_volume:     
+    media_volume:
+    pgdata:
 
