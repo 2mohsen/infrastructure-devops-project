@@ -11,7 +11,7 @@ volumes:
 services:
   traefik:
     image: traefik
-    container_name: treafik 
+    container_name: traefik 
     command:
       - "--log.level=INFO"
       - "--log.filepath=/log-file.log"
@@ -38,7 +38,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik-acme:/acme
+      - /traefik-acme:/acme
       - ./traefik:/traefik
     networks:
       - default
@@ -50,7 +50,7 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`traefik.2mohsen.ir`)"
       - "traefik.http.routers.traefik.middlewares=https-redirect"
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.web-auth.basicauth.users=user:$$apr1$$QpkypDvQ$$FjJgBGyX/By8agkOCUvDo."
+      - "traefik.http.middlewares.web-auth.basicauth.users=mohamad:$$2y$$10$$FaU1B6Q82SDbR5qqIN4Q0.OprpZw/KUCO0FxfbX3HwR/nMX8b2fLu"
       - "traefik.http.routers.traefik-secure.middlewares=web-auth"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
       - "traefik.http.routers.traefik-secure.rule=Host(`traefik.2mohsen.ir`)"
@@ -59,8 +59,8 @@ services:
       - "traefik.http.routers.traefik-secure.tls.certresolver=mycert"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     healthcheck:
-      test: ["CMD", "traefik", "healthcheck"]
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
       interval: 5s
-      timeout: 3s
+      timeout: 8s
       retries: 5
       start_period: 10s

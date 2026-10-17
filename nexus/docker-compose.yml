@@ -14,7 +14,7 @@ services:
     container_name: nexus 
     restart: always
     volumes:
-      - "nexus-data:/sonatype-work"
+      - "/nexus-data:/sonatype-work"
     networks:
       - default
     labels:

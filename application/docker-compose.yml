@@ -11,6 +11,8 @@ services:
       - POSTGRES_DB=devops
       - POSTGRES_USER=devops
       - POSTGRES_PASSWORD=devops
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
   rabbitmq:
     image: "docker.2mohsen.ir/database/rabbitmq:alpine"
