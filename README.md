@@ -2,6 +2,10 @@
 
 Infrastructure and deployment configuration for the **DevOps Django application**. This repository brings together the Docker Compose definitions for the application stack, Traefik reverse proxy, and Sonatype Nexus Repository.
 
+---
+> **This project was developed as part of a student's academic work in 2026.**
+---
+
 > **Application source code:** The Django/Python code is maintained separately in [`2mohsen/app-devops-project`](https://github.com/2mohsen/app-devops-project). This repository focuses on infrastructure and deployment configuration.
 
 ## Related repositories
